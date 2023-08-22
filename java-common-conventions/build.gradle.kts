@@ -1,17 +1,13 @@
 plugins {
-    // Support convention plugins written in Kotlin.
     `kotlin-dsl`
-    java
-    id("com.gevamu.plugins.plugin-common-conventions")
+    id("com.gevamu.build.gradle-plugin-conventions")
 }
 
-val plugin_version: String by project
-
-group = "com.gevamu.plugins"
-version = plugin_version
-
-repositories {
-    // Use the plugin portal to apply community plugins in convention plugins.
-    gradlePluginPortal()
+gradlePlugin {
+    plugins {
+        named("${project.group}.${project.name}") {
+            displayName = "Gavamu Java common conventions plugin"
+            description = "Gradle plugin defining rules for Java projects used in Gevamu builds"
+        }
+    }
 }
-

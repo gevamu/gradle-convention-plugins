@@ -1,24 +1,15 @@
-val kotlin_version: String by project
-val plugin_version: String by project
-
-group = "com.gevamu.plugins"
-version = plugin_version
+val kotlinVersion: String by project
 
 plugins {
-    id("com.gevamu.plugins.plugin-common-conventions")
-}
-
-repositories {
-    mavenCentral()
-    gradlePluginPortal()
+    id("com.gevamu.build.gradle-plugin-conventions")
 }
 
 dependencies {
-    implementation(gradlePlugin("org.jetbrains.kotlin.jvm", kotlin_version))
+    implementation(gradlePlugin("org.jetbrains.kotlin.jvm", kotlinVersion))
     // Kotlin style checker (3.0.x is for Kotlin 1.4)
     implementation(gradlePlugin("org.jmailen.kotlinter", "3.0.2"))
     // Documentation engine for Kotlin
-    implementation(gradlePlugin("org.jetbrains.dokka", kotlin_version))
+    implementation(gradlePlugin("org.jetbrains.dokka", kotlinVersion))
 }
 
 configurations.all {
@@ -30,11 +21,11 @@ configurations.all {
 
 gradlePlugin {
     plugins {
-        create("kotlinCommonConventions")  {
-            id = "${group}.kotlin-common-conventions"
+        create("${project.group}.${project.name}")  {
+            id = "${project.group}.${project.name}"
             implementationClass = "${group}.KotlinCommonPlugin"
-            displayName = "Kotlin Common Conventions"
-            description = "Custom Kotlin setup for gevamu projects"
+            displayName = "Gavamu Kotlin common conventions plugin"
+            description = "Gradle plugin defining rules for Kotlin projects used in Gevamu builds"
         }
     }
 }
@@ -42,5 +33,5 @@ gradlePlugin {
 fun gradlePlugin(id: String, version: String) = "$id:$id.gradle.plugin:$version"
 
 fun DependencySubstitutions.substituteKotlinModule(moduleNotation: String) {
-    substitute(module(moduleNotation)).using(module("$moduleNotation:$kotlin_version"))
+    substitute(module(moduleNotation)).using(module("$moduleNotation:$kotlinVersion"))
 }

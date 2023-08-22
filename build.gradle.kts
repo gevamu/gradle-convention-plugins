@@ -1,19 +1,11 @@
-val projects = listOf(
-    "plugin-common-conventions",
-    "java-common-conventions",
-    "java-library-conventions",
-    "kotlin-common-conventions",
-    "cordformation-conventions",
-    "kotlin-cordapp-conventions",
-    "publish-cordapp-conventions"
-)
+plugins {
+    `lifecycle-base`
+}
 
-
-listOf("build", "clean", "assemble", "check", "publish").forEach { taskName ->
-    tasks.register(taskName) {
-        projects.forEach { projectName ->
-            dependsOn(gradle.includedBuild(projectName).task(":$taskName"))
+listOf("build", "clean", "assemble", "check").forEach { taskName ->
+    tasks.named(taskName) {
+        subprojects.forEach { subproject ->
+            dependsOn(subproject.tasks[taskName])
         }
-        this.group = "build"
     }
 }

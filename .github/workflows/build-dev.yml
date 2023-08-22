@@ -1,8 +1,8 @@
 name: GitHub Actions - Build
 on:
-  push:
+  pull_request:
     branches:
-      - 'dev'
+      - 'master'
 
 jobs:
   build-dev:
@@ -15,5 +15,6 @@ jobs:
           distribution: 'corretto'
           java-version: '8'
           cache: 'gradle'
+
       - name: 'Build'
         run: ./gradlew build --no-daemon

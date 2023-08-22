@@ -1,15 +1,14 @@
-rootProject.name = "gradle-conventions-plugins"
+rootProject.name = "com.gevamu.build"
 
 pluginManagement {
-    repositories {
-        // Use the plugin portal to apply community plugins in convention plugins.
-        gradlePluginPortal()
-    }
-    includeBuild("kotlin-common-conventions")
-    includeBuild("plugin-common-conventions")
-    includeBuild("java-common-conventions")
-    includeBuild("java-library-conventions")
-    includeBuild("cordformation-conventions")
-    includeBuild("kotlin-cordapp-conventions")
-    includeBuild("publish-cordapp-conventions")
+    includeBuild("build-logic")
 }
+
+include(
+    "cordformation-conventions",
+    "java-common-conventions",
+    "java-library-conventions",
+    "kotlin-common-conventions",
+    "kotlin-cordapp-conventions",
+    "publish-cordapp-conventions",
+)
