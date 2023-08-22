@@ -3,16 +3,9 @@ plugins {
     id("com.gevamu.build.gradle-plugin-conventions")
 }
 
-repositories {
-    // Corda plugins v5.1.0 aren't published to the Gradle Plugin Portal :-(
-    maven("https://software.r3.com/artifactory/corda")
-}
-
 dependencies {
     // Corda plugins
-    implementation(gradlePlugin("net.corda.plugins.quasar-utils", "5.1.0"))
-    implementation(gradlePlugin("net.corda.plugins.cordapp", "5.1.0"))
-    implementation(gradlePlugin("net.corda.plugins.cordformation", "5.1.0"))
+    implementation(gradlePlugin("net.corda.plugins.cordformation", "5.1.1"))
 }
 
 gradlePlugin {
