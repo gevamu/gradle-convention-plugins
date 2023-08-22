@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gevamu.plugins;
+package com.gevamu.build;
 
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
