@@ -26,18 +26,12 @@ enum class LicenseType {
     EXACTPRO
 }
 
-enum class MavenRepository {
-    MAVEN_CENTRAL,
-    GITHUB_PACKAGES,
-}
-
 interface CordappPublishingExtension {
     val name: Property<String>
     val description: Property<String>
     val vcsUrl: Property<String>
     // TODO Get from cordapp.contract
     val license: Property<LicenseType>
-    val repositories: Property<Set<MavenRepository>>
 }
 
 val extension: CordappPublishingExtension = extensions.create<CordappPublishingExtension>("cordappPublishing")
@@ -50,32 +44,15 @@ publishing {
             artifact(project.tasks["sourcesJar"])
         }
     }
-    if (extension.repositories.isPresent && extension.repositories.get().isNotEmpty()) {
-        val requestedRepositories = extension.repositories.get()
-        repositories {
-            if (requestedRepositories.contains(MavenRepository.MAVEN_CENTRAL)) {
-                maven {
-                    name = "mavenCentral"
-                    setUrl("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-                    credentials {
-                        username = System.getenv("MAVEN_USERNAME")
-                        password = System.getenv("MAVEN_PASSWORD")
-                    }
-                }
-            }
-            if (requestedRepositories.contains(MavenRepository.GITHUB_PACKAGES)) {
-                maven {
-                    name = "gitHubPackages"
-                    setUrl("https://maven.pkg.github.com/gevamu/corda-payments-sdk")
-                    credentials {
-                        username = System.getenv("GITHUB_ACTOR")
-                        password = System.getenv("GITHUB_TOKEN")
-                    }
-                }
+    repositories {
+        maven {
+            name = "mavenCentral"
+            setUrl("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+            credentials {
+                username = System.getenv("MAVEN_USERNAME")
+                password = System.getenv("MAVEN_PASSWORD")
             }
         }
-    } else {
-        logger.warn("cordappPublishing.repositories aren't set")
     }
 }
 

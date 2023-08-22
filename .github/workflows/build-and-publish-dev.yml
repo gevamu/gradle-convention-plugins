@@ -5,7 +5,7 @@ name: GitHub Actions - Build and publish build logic plugins
 on:
   push:
     branches:
-      - 'master'
+      - 'dev'
 
 jobs:
   build-and-publish:
@@ -30,7 +30,7 @@ jobs:
             cordapp-publish-conventions/gradle.properties
 
       - name: 'Publish cordapp-publish-conventions'
-        if: steps.verify-cordapp-publish-updated.outputs.any_changed == 'true'
+#        if: steps.verify-cordapp-publish-updated.outputs.any_changed == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew :cordapp-publish-conventions:publish
@@ -43,7 +43,7 @@ jobs:
             cordformation-conventions/gradle.properties
 
       - name: 'Publish cordformation-conventions'
-        if: steps.verify-cordformation-updated.outputs.any_changed == 'true'
+#        if: steps.verify-cordformation-updated.outputs.any_changed == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew :cordformation-conventions:publish
@@ -56,7 +56,7 @@ jobs:
             java-common-conventions/gradle.properties
 
       - name: 'Publish java-common-conventions'
-        if: steps.verify-java-common-updated.outputs.any_changed == 'true'
+#        if: steps.verify-java-common-updated.outputs.any_changed == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew :java-common-conventions:publish
@@ -69,7 +69,7 @@ jobs:
             java-library-conventions/gradle.properties
 
       - name: 'Publish java-library-conventions'
-        if: steps.verify-java-library-updated.outputs.any_changed == 'true'
+#        if: steps.verify-java-library-updated.outputs.any_changed == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew :java-library-conventions:publish
@@ -82,7 +82,7 @@ jobs:
             kotlin-common-conventions/gradle.properties
 
       - name: 'Publish kotlin-common-conventions'
-        if: steps.verify-kotlin-common-updated.outputs.any_changed == 'true'
+#        if: steps.verify-kotlin-common-updated.outputs.any_changed == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew :kotlin-common-conventions:publish
@@ -95,7 +95,7 @@ jobs:
             kotlin-cordapp-conventions/gradle.properties
 
       - name: 'Publish kotlin-cordapp-conventions'
-        if: steps.verify-kotlin-cordapp-updated.outputs.any_changed == 'true'
+#        if: steps.verify-kotlin-cordapp-updated.outputs.any_changed == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew :kotlin-cordapp-conventions:publish

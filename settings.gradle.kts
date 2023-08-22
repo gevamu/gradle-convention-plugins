@@ -5,10 +5,10 @@ pluginManagement {
 }
 
 include(
+    "cordapp-publish-conventions",
     "cordformation-conventions",
     "java-common-conventions",
     "java-library-conventions",
     "kotlin-common-conventions",
     "kotlin-cordapp-conventions",
-    "publish-cordapp-conventions",
 )

@@ -16,7 +16,8 @@
 
 package com.gevamu.build
 
-val vcsUrl: String = "https://github.com/gevamu/gradle-conventions-plugins"
+val githubRepository = "gevamu/gradle-convention-plugins"
+val vcsUrl: String = "https://github.com/$githubRepository"
 
 plugins {
     id("com.gradle.plugin-publish")
@@ -32,7 +33,7 @@ publishing {
     repositories {
         maven {
             name = "gitHubPackages"
-            setUrl(vcsUrl)
+            setUrl("https://maven.pkg.github.com/$githubRepository")
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")
