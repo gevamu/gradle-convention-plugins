@@ -37,7 +37,7 @@ public class KotlinCommonPlugin implements Plugin<Project> {
     private static final String TARGET_JVM_VERSION = "1.8";
 
     private static final String[] PLUGIN_DEPENDENCIES = new String[] {
-        "com.gevamu.plugins.java-common-conventions",
+        "com.gevamu.build.java-common-conventions",
         "org.jetbrains.kotlin.jvm",
         "org.jmailen.kotlinter",
         "org.jetbrains.dokka"
