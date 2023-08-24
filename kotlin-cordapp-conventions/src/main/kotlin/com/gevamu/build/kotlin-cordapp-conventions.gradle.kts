@@ -25,22 +25,20 @@ plugins {
 }
 
 repositories {
-    maven("https://software.r3.com/artifactory/corda")
+    maven("https://download.corda.net/maven/corda-dependencies")
     maven("https://repo.gradle.org/gradle/libs-releases-local")
     maven("https://jitpack.io")
 }
 
 dependencies {
     // Corda
-    cordaProvided("net.corda:corda-core:4.9.3")
-    cordaProvided("net.corda:corda-node-api:4.9.3")
-
-    cordaRuntimeOnly("net.corda:corda:4.9.3")
-
-    // Logging. Corda 4.9.3 provides log4j 2.17.1
+    cordaProvided("net.corda:corda-core:4.9.6")
+    cordaProvided("net.corda:corda-node-api:4.9.6")
     cordaProvided("org.apache.logging.log4j:log4j-api:2.17.1")
 
-    testImplementation("net.corda:corda-node-driver:4.9.3")
+    cordaRuntimeOnly("net.corda:corda:4.9.6")
+
+    testImplementation("net.corda:corda-node-driver:4.9.6")
 }
 
 configurations.all {
@@ -89,6 +87,7 @@ tasks {
 }
 
 cordapp {
+    // XXX 8 is Corda 4.6
     targetPlatformVersion(8)
     minimumPlatformVersion(8)
 }

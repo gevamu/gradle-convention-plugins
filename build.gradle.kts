@@ -1,11 +1,13 @@
 plugins {
-    `lifecycle-base`
+    base
 }
 
-listOf("build", "clean", "assemble", "check").forEach { taskName ->
-    tasks.named(taskName) {
-        subprojects.forEach { subproject ->
-            dependsOn(subproject.tasks[taskName])
+tasks {
+    listOf(assemble, build, check, clean).forEach { task ->
+        task {
+            subprojects.forEach { subproject ->
+                dependsOn(subproject.tasks[task.name])
+            }
         }
     }
 }

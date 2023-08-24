@@ -21,18 +21,18 @@ plugins {
 }
 
 // XXX or by project() ?
-val corda_release_version: String by extra("4.9.3")
+val corda_release_version: String by extra("4.9.6")
 
 repositories {
     mavenCentral()
-    maven("https://software.r3.com/artifactory/corda")
+    maven("https://download.corda.net/maven/corda-dependencies")
     maven("https://repo.gradle.org/gradle/libs-releases-local")
     maven("https://jitpack.io")
 }
 
 dependencies {
-    corda("net.corda:corda:4.9.3")
-    cordaBootstrapper("net.corda:corda-node-api:4.9.3")
+    corda("net.corda:corda:4.9.6")
+    cordaBootstrapper("net.corda:corda-node-api:4.9.6")
 }
 
 configurations.all {
