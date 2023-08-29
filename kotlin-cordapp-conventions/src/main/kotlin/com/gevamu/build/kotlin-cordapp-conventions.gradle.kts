@@ -18,6 +18,7 @@ package com.gevamu.build
 
 plugins {
     id("com.gevamu.build.java-library-conventions")
+    id("com.gevamu.build.kotlin-common-conventions")
 
     // Corda plugins
     id("net.corda.plugins.quasar-utils")

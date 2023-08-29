@@ -5,6 +5,7 @@ plugins {
 
 dependencies {
     implementation(project(":java-library-conventions"))
+    implementation(project(":kotlin-common-conventions"))
     // Corda plugins
     implementation(gradlePlugin("net.corda.plugins.quasar-utils", "5.1.1"))
     implementation(gradlePlugin("net.corda.plugins.cordapp", "5.1.1"))
