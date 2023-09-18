@@ -104,10 +104,11 @@ project.afterEvaluate {
                             }
                         }
                     }
-                    organization {
-                        if (!name.isPresent && !url.isPresent) {
-                            name.set("Exactpro Systems Limited")
-                            url.set("https://gevamu.com/")
+                    developers {
+                        developer {
+                            name.set("Gevamu Team")
+                            organization.set("Exactpro Systems Limited")
+                            organizationUrl.set("https://gevamu.com/")
                         }
                     }
                 }
