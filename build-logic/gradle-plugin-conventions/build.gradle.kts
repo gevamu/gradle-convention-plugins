@@ -2,8 +2,6 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "com.gevamu.build"
-
 repositories {
     gradlePluginPortal()
     mavenCentral()
